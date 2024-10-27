@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics; // For Stopwatch
 using System.IO; // For StreamWriter
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Flock : MonoBehaviour
@@ -54,21 +55,21 @@ public class Flock : MonoBehaviour
         }
     }
 
-   /* void MeasureAndWriteTiming()
-    {
-        // Start the stopwatch to measure the time
-        Stopwatch stopwatch = new Stopwatch();
-        stopwatch.Start();
+    /* void MeasureAndWriteTiming()
+     {
+         // Start the stopwatch to measure the time
+         Stopwatch stopwatch = new Stopwatch();
+         stopwatch.Start();
 
-        PartitionAndColorDrones(); // The method we want to measure
+         PartitionAndColorDrones(); // The method we want to measure
 
-        // Stop the stopwatch
-        stopwatch.Stop();
-        TimeSpan timeTaken = stopwatch.Elapsed;
+         // Stop the stopwatch
+         stopwatch.Stop();
+         TimeSpan timeTaken = stopwatch.Elapsed;
 
-        // Write the timing result to a CSV file
-        WriteTimingToCSV(timeTaken);
-    } */
+         // Write the timing result to a CSV file
+         WriteTimingToCSV(timeTaken);
+     } */
 
     //See Tho Soon Yinn 24000187
     void PartitionAndAssignDronesToNetworks()
@@ -141,9 +142,36 @@ public class Flock : MonoBehaviour
             UnityEngine.Debug.Log("No drones left to delete.");
         }
     }
+
+    //Syukri 24000074
+    void DeletionTimingToCSV(TimeSpan timeTaken)
+    {
+        // Define the path for the CSV file
+        string filePath = Path.Combine(Application.dataPath, "FlockDeletion.csv");
+
+        // Check if the file exists; if not, create it and write the header
+        bool fileExists = File.Exists(filePath);
+
+        using (StreamWriter writer = new StreamWriter(filePath, true)) // Append to the file
+        {
+            if (!fileExists)
+            {
+                writer.WriteLine("Timestamp, Time Taken (ms)"); // CSV header
+            }
+
+            // Write the current timestamp and time taken for partitioning
+            writer.WriteLine($"{DateTime.Now}, {timeTaken.TotalMilliseconds}");
+        }
+
+        UnityEngine.Debug.Log($"Deletion timing result written to {filePath}: {timeTaken.TotalMilliseconds} ms");
+    }
+
     //Syukri 24000074
     public void RemoveDrone(Drone drone)
     {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+
         // Remove from the communication network
         bool removedFromComm = droneComm.DeleteDrone(drone, droneComm.GetBlueCommHead(), droneComm.GetRedCommHead());
 
@@ -158,15 +186,21 @@ public class Flock : MonoBehaviour
         {
             UnityEngine.Debug.Log($"Failed to remove drone {drone.name} from the communication network.");
         }
+
+        stopwatch.Stop();
+        TimeSpan timeTaken = stopwatch.Elapsed;
+
+        DeletionTimingToCSV(timeTaken);
+
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
 
-        // Measure the time for partitioning
+        //Measure the time for partitioning
         //MeasureAndWriteTiming();
-        
+
         PartitionAndAssignDronesToNetworks();
 
         foreach (Drone agent in agents)
