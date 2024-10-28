@@ -33,6 +33,9 @@ public class Flock : MonoBehaviour
     // Instantiate the communication network class
     DroneCommunication droneComm = new DroneCommunication();
 
+    // Reference to TimeDisplay
+    [SerializeField] private TimeDisplay timeDisplay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,21 +58,22 @@ public class Flock : MonoBehaviour
         }
     }
 
-    /* void MeasureAndWriteTiming()
+     void MeasureAndWriteTiming()
      {
          // Start the stopwatch to measure the time
          Stopwatch stopwatch = new Stopwatch();
          stopwatch.Start();
 
-         PartitionAndColorDrones(); // The method we want to measure
+         PartitionAndAssignDronesToNetworks(); // The method we want to measure
 
          // Stop the stopwatch
          stopwatch.Stop();
          TimeSpan timeTaken = stopwatch.Elapsed;
 
-         // Write the timing result to a CSV file
-         WriteTimingToCSV(timeTaken);
-     } */
+        // Write the timing result to a CSV file
+        WriteTimingToCSV(timeTaken);
+
+     } 
 
     //See Tho Soon Yinn 24000187
     void PartitionAndAssignDronesToNetworks()
@@ -112,7 +116,7 @@ public class Flock : MonoBehaviour
         {
             if (!fileExists)
             {
-                writer.WriteLine("Timestamp, Time Taken (ms)"); // CSV header
+                writer.WriteLine("Timestamp, Time Taken to Partition(ms)"); // CSV header
             }
 
             // Write the current timestamp and time taken for partitioning
@@ -156,7 +160,7 @@ public class Flock : MonoBehaviour
         {
             if (!fileExists)
             {
-                writer.WriteLine("Timestamp, Time Taken (ms)"); // CSV header
+                writer.WriteLine("Timestamp, Time Taken To Delete(ms)"); // CSV header
             }
 
             // Write the current timestamp and time taken for partitioning
@@ -192,16 +196,16 @@ public class Flock : MonoBehaviour
 
         DeletionTimingToCSV(timeTaken);
 
+        //Pass value into TimeDisplay
+        TimeDisplay timeDisplay = gameObject.AddComponent<TimeDisplay>();
+        timeDisplay.updateTimeTaken(timeTaken);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //Measure the time for partitioning
         //MeasureAndWriteTiming();
-
-        PartitionAndAssignDronesToNetworks();
 
         foreach (Drone agent in agents)
         {
