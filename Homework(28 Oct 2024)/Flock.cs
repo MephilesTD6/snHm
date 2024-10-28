@@ -57,7 +57,7 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
         }
     }
-
+    
      void MeasureAndWriteTiming()
      {
          // Start the stopwatch to measure the time
@@ -147,6 +147,7 @@ public class Flock : MonoBehaviour
         }
     }
 
+    //Aiman Naim 22005653
     void DeletionTimingToCSV(TimeSpan timeTaken)
     {
         string filePath = Path.Combine(Application.dataPath, "FlockDeletion.csv");
@@ -165,7 +166,8 @@ public class Flock : MonoBehaviour
 
         UnityEngine.Debug.Log($"Deletion timing result written to {filePath}: {timeTaken.TotalMilliseconds} ms");
     }
-
+    
+    //Syukri 24000074
     public void RemoveDrone(Drone drone)
     {
         Stopwatch stopwatch = new Stopwatch();
