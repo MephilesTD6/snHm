@@ -14,7 +14,9 @@ Aiman Naim bin Shaiful Zahrin (22005653) from EEE
 The aim is to create a game using Unity, in which player character collects valuables whilst avoiding the drone swarm enemies
 
 To run our project in unity, 
-1. Download sir's Swarm-main code
+1. Download sir's Swarm-main code and open it in Unity
 2. Download our Assets folder and replace sir's Assest with ours
-3. Replace the files in our Assets folder with those of the same name in our newest Homework folders
+3. Replace the files in our Assets folder with those in our newest Homework folders but keep the Behavior, BehaviorObjects in our assest untouched
 4. Add files that are present in Homework, that are not present in our Assets
+5. Run the project in unity (If they ask to download anything like TextMexhPro/TMP, just download it)
+   
