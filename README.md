@@ -16,8 +16,6 @@ The buttons are used to remove the drones from the simulation to 'save the cat'.
 
 To run our project in unity, 
 1. Download sir's Swarm-main code and open it in Unity
-2. Download our Assets folder and replace sir's Assest with ours
-3. Replace the files in our Assets folder with those in our newest Homework folders but keep the Behavior, BehaviorObjects in our assest untouched
-4. Add files that are present in Homework, that are not present in our Assets
-5. Run the project in unity (If they ask to download anything like TextMexhPro/TMP, just download it)
+2. Replace the files in Assets folder with those in our newest Homework folders but keep the Behavior, BehaviorObjects in our assest untouched
+3. Run the project in unity (If they ask to download anything like TextMexhPro/TMP, just download it)
    
