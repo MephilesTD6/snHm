@@ -11,8 +11,8 @@ Hamzah Muhsin (22001057)
 Aiman Naim bin Shaiful Zahrin (22005653) from EEE
 
 
-The aim is to create a game using Unity, in which player character collects drone swarm enemies
-The player cannot reach enemies from higher up, so buttons are used to remove them from the simulation.
+The aim is to create a game using Unity, in which player deletes drones(bats) that swarm in a cave.
+The buttons are used to remove the drones from the simulation to 'save the cat'.
 
 To run our project in unity, 
 1. Download sir's Swarm-main code and open it in Unity
