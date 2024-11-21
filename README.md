@@ -8,7 +8,7 @@ Avinash Kumar A/L Jayaseelan (24000113)
 Syukri Fadhli (24000074)  
 Ashwin A/L Ravichandran (22012188) 
 Hamzah Muhsin (22001057)  
-Aiman Naim bin Shaiful Zahrin (22005653) from EEE
+Aiman Naim bin Shaiful Zahrin (22005653)
 
 
 The aim is to create a game using Unity, in which player deletes drones(bats) that swarm in a cave.
