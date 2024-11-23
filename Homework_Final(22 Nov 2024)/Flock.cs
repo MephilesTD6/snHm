@@ -143,7 +143,7 @@ public class Flock : MonoBehaviour
     }
 
 
-    //Syukri 24000074
+    //See tho and Ashwin
     //function to delete drone by id from linked list and calc time taken
     public void LinkedListDeleteDrone()
     {   
@@ -200,7 +200,7 @@ public class Flock : MonoBehaviour
         return droneBTComm;
     }
 
-    //Ashwin & See Tho
+    //See Tho and Aiman Naim
     // //function to delete drone by id from binary tree and calc time taken
     public void BinaryTreeDeleteDrone()
     {
@@ -267,7 +267,7 @@ public class Flock : MonoBehaviour
         TreeDeletionTimingToCSV(stopwatch.Elapsed);
     }
 
-    //
+    //See Tho
     public void GraphDeleteDrone()
     {
         // Start timing
@@ -375,7 +375,7 @@ public class Flock : MonoBehaviour
         GraphDeletionTimingToCSV(stopwatch.Elapsed);
     }
 
-
+    //Avinash Kumar
     void ListDeletionTimingToCSV(TimeSpan timeTaken)
     {
         string filePath = Path.Combine(Application.dataPath, "FlockListDeletion.csv");
@@ -402,7 +402,8 @@ public class Flock : MonoBehaviour
             UnityEngine.Debug.LogError("TimeDisplay reference is missing in Flock.");
         }
     }
-
+    
+     //Avinash Kumar
     void TreeDeletionTimingToCSV(TimeSpan timeTaken)
     {
         string filePath = Path.Combine(Application.dataPath, "FlockTreeDeletion.csv");
@@ -429,7 +430,8 @@ public class Flock : MonoBehaviour
             UnityEngine.Debug.LogError("TimeDisplay reference is missing in Flock.");
         }
     }
-
+    
+     //Avinash Kumar
     void GraphDeletionTimingToCSV(TimeSpan timeTaken)
     {
         string filePath = Path.Combine(Application.dataPath, "FlockGraphDeletion.csv");
@@ -457,6 +459,7 @@ public class Flock : MonoBehaviour
         }
     }
 
+    //Avinash Kumar
     void WriteTimingToCSV(TimeSpan timeTaken)
     {
         // Define the path for the CSV file
